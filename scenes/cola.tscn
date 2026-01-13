@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://drh8wiom5ca3x"]
+
+[ext_resource type="Texture2D" uid="uid://ccliveox0nqo4" path="res://assets/BurperSpriteSheet.png" id="1_0hbr2"]
+[ext_resource type="Script" uid="uid://bpp0vkpdkc8fj" path="res://script/cola.gd" id="1_apuy2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apuy2"]
+size = Vector2(8, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5tal"]
+atlas = ExtResource("1_0hbr2")
+region = Rect2(400, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im8y1"]
+atlas = ExtResource("1_0hbr2")
+region = Rect2(432, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uosps"]
+atlas = ExtResource("1_0hbr2")
+region = Rect2(416, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rptpj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5tal")
+}],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im8y1")
+}],
+"loop": false,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uosps")
+}],
+"loop": false,
+"name": &"half",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im8y1"]
+size = Vector2(32, 33)
+
+[node name="cola" type="CharacterBody2D"]
+script = ExtResource("1_apuy2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_apuy2")
+
+[node name="cola_sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+sprite_frames = SubResource("SpriteFrames_rptpj")
+animation = &"half"
+
+[node name="drink_timer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_im8y1")
+
+[connection signal="timeout" from="drink_timer" to="." method="_on_drink_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

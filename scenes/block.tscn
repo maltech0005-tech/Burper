@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0dmcy8suvthm"]
+
+[ext_resource type="Texture2D" uid="uid://ccliveox0nqo4" path="res://assets/BurperSpriteSheet.png" id="1_8r6n6"]
+[ext_resource type="Script" uid="uid://dj8xxklpg17mj" path="res://script/block.gd" id="1_cgrg5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgrg5"]
+atlas = ExtResource("1_8r6n6")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kun4"]
+atlas = ExtResource("1_8r6n6")
+region = Rect2(560, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bw7o"]
+atlas = ExtResource("1_8r6n6")
+region = Rect2(608, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bk4tb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgrg5")
+}],
+"loop": true,
+"name": &"crack1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kun4")
+}],
+"loop": true,
+"name": &"crack2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bw7o")
+}],
+"loop": false,
+"name": &"shatter",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfh62"]
+size = Vector2(26, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kun4"]
+size = Vector2(32, 33)
+
+[node name="block" type="CharacterBody2D"]
+script = ExtResource("1_cgrg5")
+
+[node name="crack_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -0.5)
+scale = Vector2(1, 1.03125)
+sprite_frames = SubResource("SpriteFrames_bk4tb")
+animation = &"shatter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_kfh62")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_4kun4")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

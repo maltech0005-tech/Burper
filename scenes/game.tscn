@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://rncjacungctb"]
+
+[ext_resource type="PackedScene" uid="uid://ckuqpwimxwb5x" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://dlsgsh6efp7qs" path="res://scenes/lv_1.tscn" id="2_yqjtg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnu2h"]
+bg_color = Color(0.6, 0.09019608, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbhrr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
+
+[node name="game" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_uwrxv")]
+z_index = 10
+position = Vector2(381.32513, 619.26294)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-1.7715454, -1.7715607)
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_bottom = 672
+limit_smoothed = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 9
+offset_left = 52.0
+offset_top = 4.0
+offset_right = 272.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_lnu2h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lbhrr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_top = 7.0
+offset_right = 48.0
+offset_bottom = 26.0
+theme_override_font_sizes/normal_font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_iywne")
+theme_override_styles/background = SubResource("StyleBoxFlat_p57ef")
+text = "Capacity"
+
+[node name="lv1" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(0.9628906, 1.5047607)
