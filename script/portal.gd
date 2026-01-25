@@ -1,6 +1,7 @@
 extends Area2D
 
 var player = null
+var enemy = null
 var portal = null
 var is_on_cooldown = false
 @onready var timer: Timer = $Timer
@@ -9,6 +10,7 @@ var is_on_cooldown = false
 func _ready() -> void:
 	add_to_group("portals")
 	player = get_tree().get_first_node_in_group("player")
+	enemy = get_tree().get_first_node_in_group("enemies")
 	timer.one_shot = true
 	get_random_portal()
 	
@@ -27,6 +29,18 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 		timer.start(1.0)
 		destination.start_cooldown()
 		body.global_position = destination.global_position
+		
+	elif body.is_in_group("enemies") and not is_on_cooldown:
+		var destination := get_random_portal()
+
+		if destination == null:
+			return
+
+		is_on_cooldown = true
+		timer.start(1.0)
+		destination.start_cooldown()
+		body.global_position = destination.global_position
+		
 
 func get_random_portal() -> Area2D:
 	var portals := get_tree().get_nodes_in_group("portals")
@@ -46,3 +60,4 @@ func start_cooldown():
 
 func _on_timer_timeout():
 	is_on_cooldown = false
+	

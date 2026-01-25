@@ -12,7 +12,7 @@ var player_dir = Vector2.ZERO
 func _ready() -> void:
 	add_to_group("colas")
 	player = get_tree().get_first_node_in_group("player")
-	enemy=get_tree().get_first_node_in_group("enemy")
+	enemy = get_tree().get_first_node_in_group("enemies")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -38,19 +38,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			rotate(-1.57)
 		player.drink_particles.visible=true
 		drink_timer.start()
-	if body.is_in_group("enemy"):
-		player_dir = (player.global_position-global_position).normalized()
-		rotate(deg_to_rad(4))
 		
+	elif body.is_in_group("enemies"):
 		#if enemy.position>position:
 			#rotate(1.57)
 		#else:
 			#rotate(-1.57)
-		enemy.drink_particles.visible=true
+		#enemy.drink_particles.visible=true
 		drink_timer.start()
 		
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player") or body.is_in_group("enemy"):
+	if body.is_in_group("player") or body.is_in_group("enemies"):
 		rotation=0
 		player.drink_particles.visible=false
 		drink_timer.stop()

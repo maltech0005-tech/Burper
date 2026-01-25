@@ -140,11 +140,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0cyh"]
-size = Vector2(30, 30)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(70, 70)
 
 [node name="enemy" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_md0e3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="enemy_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_otmr2")
@@ -156,7 +159,6 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_wtq4b")
 animation = &"cola"
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_j0cyh")
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_md0e3")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://rncjacungctb"]
 
 [ext_resource type="PackedScene" uid="uid://ckuqpwimxwb5x" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://dlsgsh6efp7qs" path="res://scenes/lv_1.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cktap6qsgb131" path="res://scenes/lv_0.tscn" id="2_yqjtg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnu2h"]
 bg_color = Color(0.6, 0.09019608, 0.6, 1)
@@ -16,14 +16,15 @@ bg_color = Color(0.6, 0.09019608, 0.6, 1)
 
 [node name="player" parent="." instance=ExtResource("1_uwrxv")]
 z_index = 10
-position = Vector2(381.32513, 619.26294)
+position = Vector2(213.98547, 332.00327)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(-1.7715454, -1.7715607)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
-limit_bottom = 672
+limit_right = 1505
+limit_bottom = 864
 limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -47,5 +48,4 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_iywne")
 theme_override_styles/background = SubResource("StyleBoxFlat_p57ef")
 text = "Capacity"
 
-[node name="lv1" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(0.9628906, 1.5047607)
+[node name="lv0" parent="." instance=ExtResource("2_yqjtg")]
