@@ -7,6 +7,7 @@ var capacity=1
 var player= null
 var enemy = null
 var player_dir = Vector2.ZERO
+var is_player = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,14 +29,18 @@ func _process(_delta: float) -> void:
 	
 func _on_drink_timer_timeout() -> void:
 	capacity-=0.5
+	if is_player:
+		player.cola_cap+=1
 	drink_timer.start(1)
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		is_player=true
 		if player.position>position:
 			rotate(1.57)
 		else:
 			rotate(-1.57)
+		player.player_sprite.play("eating")
 		player.drink_particles.visible=true
 		drink_timer.start()
 		
@@ -49,6 +54,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player") or body.is_in_group("enemies"):
+		is_player=false
+		player.player_sprite.play("idle")
 		rotation=0
 		player.drink_particles.visible=false
 		drink_timer.stop()
+	if body.is_in_group("enemies"):
+		rotation=0
+		player.drink_particles.visible=false
+		drink_timer.stop()
+	

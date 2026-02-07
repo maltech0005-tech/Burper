@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 150.0
 @onready var drink_particles: AnimatedSprite2D = $drink_particles
 @onready var player_sprite: AnimatedSprite2D = $player_sprite
+var cola_cap = 0
 
 func _ready() -> void:
 	add_to_group("player")
