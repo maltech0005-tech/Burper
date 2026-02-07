@@ -59,6 +59,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		rotation=0
 		player.drink_particles.visible=false
 		drink_timer.stop()
+		
 	if body.is_in_group("enemies"):
 		rotation=0
 		player.drink_particles.visible=false
