@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://rncjacungctb"]
+[gd_scene load_steps=10 format=3 uid="uid://rncjacungctb"]
 
+[ext_resource type="Script" uid="uid://c5jk877ehkpaf" path="res://scenes/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://ckuqpwimxwb5x" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://drh8wiom5ca3x" path="res://scenes/cola.tscn" id="2_iywne"]
 [ext_resource type="Script" uid="uid://d2kualnsgftb6" path="res://script/stats.gd" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cktap6qsgb131" path="res://scenes/lv_0.tscn" id="2_yqjtg"]
 
@@ -16,6 +18,8 @@ bg_color = Color(0.6, 0.6, 0.6, 0.007843138)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_lbhrr")
+cola_scene = ExtResource("2_iywne")
 
 [node name="player" parent="." instance=ExtResource("1_uwrxv")]
 z_index = 10
