@@ -30,6 +30,7 @@ limit_right = 1505
 limit_bottom = 864
 
 [node name="stats" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("2_lnu2h")
 
 [node name="capacity" type="ProgressBar" parent="stats"]
@@ -52,4 +53,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_iywne")
 theme_override_styles/background = SubResource("StyleBoxFlat_p57ef")
 text = "Capacity"
 
+[node name="pause" type="Button" parent="stats"]
+process_mode = 3
+offset_left = 556.6386
+offset_top = 3.20401
+offset_right = 611.6386
+offset_bottom = 34.20401
+text = "pause"
+
 [node name="lv0" parent="." instance=ExtResource("2_yqjtg")]
+
+[connection signal="pressed" from="stats/pause" to="stats" method="_on_pause_pressed"]

@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var cola_sprite: AnimatedSprite2D = $cola_sprite
 @onready var drink_timer: Timer = $drink_timer
+@onready var collision_shape1: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape2: CollisionShape2D = $Area2D/CollisionShape2D
 
 var capacity=1
 var player= null
@@ -26,6 +28,7 @@ func _process(_delta: float) -> void:
 		await cola_sprite.animation_finished
 		player.drink_particles.visible=false
 		queue_free()
+		
 	
 func _on_drink_timer_timeout() -> void:
 	capacity-=0.5
@@ -64,4 +67,11 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		rotation=0
 		player.drink_particles.visible=false
 		drink_timer.stop()
+		
+func disable_collisions():
+	set_deferred("disable_mode", true)
+	
+func enable_collisions():
+	collision_shape1.set_deferred("disabled", true)
+	collision_shape2.set_deferred("disabled", true)
 	

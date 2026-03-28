@@ -296,36 +296,47 @@ tile_set = SubResource("TileSet_i8dj5")
 [node name="colas" type="Node2D" parent="."]
 
 [node name="cola" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(352, 460)
 
 [node name="cola2" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(814.0703, 660.14594)
 
 [node name="cola3" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(811.7124, 207.41986)
 
 [node name="cola4" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(1099.3821, 421.99316)
 
 [node name="cola5" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(1309.2395, 556.3962)
 
 [node name="cola6" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(221.15149, 554.03827)
 
 [node name="cola7" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(347.1966, 157.90294)
 
 [node name="cola8" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(1198.4159, 199.38457)
 
 [node name="cola9" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(689.0991, 343.21945)
 
 [node name="cola10" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(906.0304, 272.481)
 
 [node name="cola11" parent="colas" instance=ExtResource("2_p6pyy")]
+visible = false
 position = Vector2(1031.0016, 805.37726)
 
 [node name="cola12" parent="colas" instance=ExtResource("2_p6pyy")]
