@@ -19,6 +19,9 @@ func _ready() -> void:
 
 	refresh_cola_list()
 	
+func _process(_delta: float) -> void:
+	refresh_cola_list()
+	
 func _physics_process(delta: float) -> void:
 	repath_timer += delta
 
@@ -48,6 +51,7 @@ func get_closest_cola() -> Node2D:
 
 	for cola in colas:
 		if not is_instance_valid(cola):
+			refresh_cola_list()
 			continue
 
 		var dist := global_position.distance_to(cola.global_position)
@@ -56,6 +60,7 @@ func get_closest_cola() -> Node2D:
 			closest = cola
 
 	return closest
+
 
 func apply_knockback(source_position: Vector2, strength: float) -> void:
 	var dir := (global_position - source_position).normalized()
