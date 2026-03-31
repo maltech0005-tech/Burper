@@ -11,6 +11,7 @@ extends Node2D
 @onready var meter_floor: CollisionShape2D = $Area2D/meter_floor
 
 var player = null
+@export var meter_scene:PackedScene
 
 var time = 60
 var game_paused = false
@@ -78,8 +79,7 @@ func run_timer():
 	
 func _on_timer_timeout() -> void:
 	if time==0:
-		get_tree().paused=true
-		start_meter_scene()
+		get_tree().change_scene_to_packed(meter_scene)
 		
 	else:
 		time-=1
