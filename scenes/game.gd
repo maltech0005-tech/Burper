@@ -1,12 +1,28 @@
 extends Node2D
 @export var cola_scene: PackedScene
+@onready var timer_label: RichTextLabel = $stats/timer_label
+@onready var timer: Timer = $stats/Timer
+@onready var pause: Button = $stats/pause
+@onready var game: Node2D = $"."
+@onready var bg: AnimatedSprite2D = $stats/bg
+@onready var restart: Button = $stats/restart
+@onready var meter: AnimatedSprite2D = $stats/meter
+
+@onready var meter_floor: CollisionShape2D = $Area2D/meter_floor
+
+var player = null
+
+var time = 60
+var game_paused = false
 
 var is_cola_present=true
 var colas: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	is_cola_still_present()
-
+	run_timer()
+	player = get_node("/root/game/player")
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	is_cola_still_present()
@@ -56,3 +72,39 @@ func instatiate_scenes():
 	add_child(cola11)
 	add_child(cola12)
 	
+func run_timer():
+	timer_label.text="Time Left: "+str(time)+"s"
+	timer.start(1)
+	
+func _on_timer_timeout() -> void:
+	if time==0:
+		get_tree().paused=true
+		start_meter_scene()
+		
+	else:
+		time-=1
+		run_timer()
+		
+func wake():
+	pass
+	
+func _on_pause_pressed() -> void:
+	if game_paused:
+		bg.visible=false
+		get_tree().paused=false
+		game_paused=false
+		pause.text="pause"
+	else:
+		pause.text="play"
+		get_tree().paused=true
+		bg.visible=true
+		game_paused=true
+		
+func start_meter_scene():
+	meter_floor.disabled=false
+	meter.visible=true
+	bg.visible=true
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		player.velocity=Vector2(0, 0)
