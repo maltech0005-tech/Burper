@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0dmcy8suvthm"]
+[gd_scene load_steps=11 format=3 uid="uid://c0dmcy8suvthm"]
 
 [ext_resource type="Texture2D" uid="uid://ccliveox0nqo4" path="res://assets/BurperSpriteSheet.png" id="1_8r6n6"]
 [ext_resource type="Script" uid="uid://dj8xxklpg17mj" path="res://script/block.gd" id="1_cgrg5"]
+[ext_resource type="AudioStream" uid="uid://cu0iomcjpicyb" path="res://assets/block_cracking.mp3" id="3_4kun4"]
+[ext_resource type="AudioStream" uid="uid://bmlrrjyr8r26w" path="res://assets/block_broken.mp3" id="3_ojgcc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgrg5"]
 atlas = ExtResource("1_8r6n6")
@@ -71,6 +73,14 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4kun4")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="block_brocken" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ojgcc")
+volume_db = -12.684
+
+[node name="block_cracking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4kun4")
+volume_db = 1.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -6,14 +6,11 @@ extends Node2D
 @onready var game: Node2D = $"."
 @onready var bg: AnimatedSprite2D = $stats/bg
 @onready var restart: Button = $stats/restart
-@onready var meter: AnimatedSprite2D = $stats/meter
-
-@onready var meter_floor: CollisionShape2D = $Area2D/meter_floor
 
 var player = null
 @export var meter_scene:PackedScene
 
-var time = 60
+var time = 120
 var game_paused = false
 
 var is_cola_present=true
@@ -85,8 +82,6 @@ func _on_timer_timeout() -> void:
 		time-=1
 		run_timer()
 		
-func wake():
-	pass
 	
 func _on_pause_pressed() -> void:
 	if game_paused:
@@ -99,12 +94,3 @@ func _on_pause_pressed() -> void:
 		get_tree().paused=true
 		bg.visible=true
 		game_paused=true
-		
-func start_meter_scene():
-	meter_floor.disabled=false
-	meter.visible=true
-	bg.visible=true
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player.velocity=Vector2(0, 0)
