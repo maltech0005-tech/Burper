@@ -1,13 +1,16 @@
-[gd_scene load_steps=77 format=4 uid="uid://c7765orpdoc1p"]
+[gd_scene load_steps=78 format=4 uid="uid://c7765orpdoc1p"]
 
 [ext_resource type="Texture2D" uid="uid://cdcigcne2u1x7" path="res://assets/BurpMeter.png" id="1_au8l4"]
 [ext_resource type="Texture2D" uid="uid://ccliveox0nqo4" path="res://assets/BurperSpriteSheet.png" id="2_qgidq"]
+[ext_resource type="AudioStream" uid="uid://ddba50nckqvtj" path="res://assets/Player_drop.mp3" id="3_dyvp4"]
 
 [sub_resource type="GDScript" id="GDScript_qgidq"]
 script/source = "extends Node2D
 @onready var player: CharacterBody2D = $player
 @onready var meter: AnimatedSprite2D = $meter
 @onready var platform: TileMapLayer = $platform
+@onready var meter_timer: Timer = $meter_timer
+@onready var player_drop: AudioStreamPlayer2D = $player_drop
 
 var player1 = null
 var cap : int
@@ -26,6 +29,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group(\"1v1\"):
 		platform.visible = false
 		get_meter_value()
+		player_drop.play()
+		meter_timer.start(5)
 		
 func get_meter_value():
 	if cap<12.5:
@@ -68,6 +73,10 @@ func start_meter_animation():
 		meter.play(\"8\")
 	if meter_level==9:
 		meter.play(\"breaker\")
+
+
+func _on_meter_timer_timeout() -> void:
+	start_meter_animation()
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_au8l4"]
@@ -1419,6 +1428,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 0.5
 
+
 	move_and_slide()
 "
 
@@ -1762,7 +1772,7 @@ process_mode = 3
 position = Vector2(384, 331.00006)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ixrmw")
-animation = &"0"
+animation = &"4"
 autoplay = "0"
 
 [node name="Area2D" type="CharacterBody2D" parent="."]
@@ -1794,8 +1804,6 @@ limit_top = 0
 limit_right = 773
 limit_bottom = 446
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
 position = Vector2(-2, -0.6446991)
 sprite_frames = SubResource("SpriteFrames_64m8y")
@@ -1819,4 +1827,15 @@ position = Vector2(545.98834, 194.01369)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cola2"]
 shape = SubResource("RectangleShape2D_mwoxm")
 
+[node name="meter_timer" type="Timer" parent="."]
+
+[node name="meter_timer2" type="Timer" parent="."]
+
+[node name="player_drop" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(369, 16)
+stream = ExtResource("3_dyvp4")
+playback_type = 1
+
 [connection signal="body_entered" from="Area2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="meter_timer" to="." method="_on_meter_timer_timeout"]
+[connection signal="timeout" from="meter_timer2" to="." method="_on_meter_timer_timeout"]

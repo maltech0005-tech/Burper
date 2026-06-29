@@ -134,7 +134,7 @@ Click to Restart"
 process_mode = 3
 stream = ExtResource("8_gee14")
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [connection signal="pressed" from="stats/pause" to="." method="_on_pause_pressed"]
 [connection signal="timeout" from="stats/Timer" to="." method="_on_timer_timeout"]
