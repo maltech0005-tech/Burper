@@ -21,6 +21,14 @@ func _ready() -> void:
 	run_timer()
 	player = get_node("/root/game/player")
 	
+func _physics_process(_delta: float) -> void:
+	process_mode=Node.PROCESS_MODE_ALWAYS
+	if Input.is_action_just_pressed("pause"):
+		_on_pause_pressed()
+		
+	if Input.is_action_pressed("restart"):
+		get_tree().reload_current_scene()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	is_cola_still_present()
@@ -82,7 +90,6 @@ func _on_timer_timeout() -> void:
 		time-=1
 		run_timer()
 		
-	
 func _on_pause_pressed() -> void:
 	if game_paused:
 		bg.visible=false
@@ -94,3 +101,9 @@ func _on_pause_pressed() -> void:
 		get_tree().paused=true
 		bg.visible=true
 		game_paused=true
+
+#func _on_pause_gui_input(event: InputEvent) -> void:
+	#if event.is_action_type():
+		#if Input.is_action_just_pressed("pause"):
+			#pause.button_pressed
+		

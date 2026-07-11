@@ -6,7 +6,7 @@
 ![Platform](https://img.shields.io/badge/Plartform-Web-blue)
 ![Contributiions](https://img.shields.io/badge/Contributions-Welcome-brightgreen)
 
-A 2D top down arcade genre game where you compete against bots in cola collection before time runs out, then get rewarded in burp coins as the burp meter reads from your burp the amount of cola you managed to browl out
+A 2D top down arcade genre game where you compete against bots in cola collection before time runs out, then get rewarded in burp coins as the burp meter reads from your burp the amount of cola you managed to brawl out
 ---
 
 ## Features
@@ -50,3 +50,6 @@ BURPER/
 └── README.md
 ```
 ---
+
+# Ai Usage
+- This project is full human written, no copy and paste or typying of code directly from ai source was practiced, all sprites were originally designed and created using libresprite(Aseprite alternative) all sounds were derived from freely downloaded from https://pixabay.com

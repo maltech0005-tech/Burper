@@ -115,7 +115,15 @@ position = Vector2(705.74194, 351.8505)
 scale = Vector2(100, 100)
 sprite_frames = SubResource("SpriteFrames_yd4ix")
 
+[node name="bg2" type="AnimatedSprite2D" parent="stats"]
+process_mode = 3
+visible = false
+position = Vector2(705.74194, 351.8505)
+scale = Vector2(100, 100)
+sprite_frames = SubResource("SpriteFrames_yd4ix")
+
 [node name="Timer" type="Timer" parent="stats"]
+process_mode = 1
 
 [node name="restart" type="Button" parent="stats"]
 process_mode = 3
@@ -136,5 +144,6 @@ stream = ExtResource("8_gee14")
 autoplay = true
 parameters/looping = true
 
+[connection signal="gui_input" from="stats/pause" to="." method="_on_pause_gui_input"]
 [connection signal="pressed" from="stats/pause" to="." method="_on_pause_pressed"]
 [connection signal="timeout" from="stats/Timer" to="." method="_on_timer_timeout"]
