@@ -13,7 +13,7 @@ A 2D top down arcade genre game where you compete against bots in cola collectio
 
 - Responsive movement
 - Intelligent enemy ai
-- navigations
+- navigation agent
 - Sound effects and music
 
 # Preview
@@ -26,7 +26,7 @@ A 2D top down arcade genre game where you compete against bots in cola collectio
 
 ## Main Menu
 <p align="center">
-<img src="">
+<img src="main_menu.png">
 </p>
 
 # Controls
@@ -38,10 +38,10 @@ A 2D top down arcade genre game where you compete against bots in cola collectio
 ---
 
 # Project Structure
+Explore the full directory tree: [View on GitHub](https://github.com/maltech0005-tech/Burper/tree/main)
 ```text
 BURPER/
 ├── assets/
-|   ├── background.mp3
 ├── scenes/
 ├── script/
 ├── export_presets.cfg
@@ -50,6 +50,7 @@ BURPER/
 └── README.md
 ```
 ---
+
 
 # Ai Usage
 - This project is full human written, no copy and paste or typying of code directly from ai source was practiced, all sprites were originally designed and created using libresprite(Aseprite alternative) all sounds were derived from freely downloaded from https://pixabay.com
