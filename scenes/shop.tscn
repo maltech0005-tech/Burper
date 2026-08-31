@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://0dgbv6ujxjoi"]
+[gd_scene load_steps=8 format=4 uid="uid://0dgbv6ujxjoi"]
 
 [ext_resource type="Script" uid="uid://ojx6r8k2v706" path="res://script/shop.gd" id="1_1l46r"]
 [ext_resource type="Texture2D" uid="uid://ccliveox0nqo4" path="res://assets/BurperSpriteSheet.png" id="1_xfvoa"]
 [ext_resource type="PackedScene" uid="uid://cof48pp2lbdd3" path="res://scenes/shop_character.tscn" id="2_1l46r"]
+[ext_resource type="Texture2D" uid="uid://cq74cvh8njfks" path="res://assets/exit.png" id="4_032fp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_032fp"]
 texture = ExtResource("1_xfvoa")
@@ -229,6 +230,7 @@ sources/1 = SubResource("TileSetAtlasSource_032fp")
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_1l46r")
+char = ExtResource("2_1l46r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.43, 3.43)
@@ -243,12 +245,6 @@ tile_set = SubResource("TileSet_2fc2m")
 [node name="TileMapLayer2" type="TileMapLayer" parent="Camera2D"]
 tile_set = SubResource("TileSet_8r1wq")
 
-[node name="ShopCharacter" parent="Camera2D" instance=ExtResource("2_1l46r")]
-position = Vector2(59, 105)
-
-[node name="ShopCharacter2" parent="Camera2D" instance=ExtResource("2_1l46r")]
-position = Vector2(52, 248)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 follow_viewport_enabled = true
 
@@ -259,3 +255,20 @@ offset_right = 334.0
 offset_bottom = 187.0
 page = 1.9
 exp_edit = true
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer"]
+offset_right = 57.0
+offset_bottom = 31.0
+text = "Exit"
+icon = ExtResource("4_032fp")
+
+[node name="ShopCharacter" parent="." instance=ExtResource("2_1l46r")]
+position = Vector2(58, 107)
+
+[node name="ShopCharacter2" parent="." instance=ExtResource("2_1l46r")]
+position = Vector2(170, 107)
+
+[node name="ShopCharacter3" parent="." instance=ExtResource("2_1l46r")]
+position = Vector2(281, 107)
+
+[connection signal="pressed" from="Camera2D/CanvasLayer/Button" to="." method="_on_button_pressed"]

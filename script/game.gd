@@ -6,6 +6,7 @@ extends Node2D
 @onready var game: Node2D = $"."
 @onready var bg: AnimatedSprite2D = $stats/bg
 @onready var restart: Button = $stats/restart
+@onready var options: VBoxContainer = $stats/options
 
 var player = null
 @export var meter_scene:PackedScene
@@ -93,11 +94,13 @@ func _on_timer_timeout() -> void:
 func _on_pause_pressed() -> void:
 	if game_paused:
 		bg.visible=false
+		options.visible=false
 		get_tree().paused=false
 		game_paused=false
 		pause.text="pause"
 	else:
 		pause.text="play"
+		options.visible=true
 		get_tree().paused=true
 		bg.visible=true
 		game_paused=true
@@ -107,3 +110,13 @@ func _on_pause_pressed() -> void:
 		#if Input.is_action_just_pressed("pause"):
 			#pause.button_pressed
 		
+
+
+func _on_continue_pressed() -> void:
+	_on_pause_pressed()
+
+func _on_restart_pressed() -> void:
+	get_tree().reload_current_scene()
+
+func _on_quit_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

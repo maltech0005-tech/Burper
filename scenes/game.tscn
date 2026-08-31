@@ -136,6 +136,25 @@ theme_override_font_sizes/font_size = 28
 text = "Game Over
 Click to Restart"
 
+[node name="options" type="VBoxContainer" parent="stats"]
+visible = false
+offset_left = 468.0
+offset_top = 255.0
+offset_right = 675.0
+offset_bottom = 370.0
+
+[node name="continue" type="Button" parent="stats/options"]
+layout_mode = 2
+text = "Continue"
+
+[node name="restart" type="Button" parent="stats/options"]
+layout_mode = 2
+text = "Restart"
+
+[node name="quit" type="Button" parent="stats/options"]
+layout_mode = 2
+text = "Quit"
+
 [node name="lv0" parent="." instance=ExtResource("2_yqjtg")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -147,3 +166,6 @@ parameters/looping = true
 [connection signal="gui_input" from="stats/pause" to="." method="_on_pause_gui_input"]
 [connection signal="pressed" from="stats/pause" to="." method="_on_pause_pressed"]
 [connection signal="timeout" from="stats/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="stats/options/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="stats/options/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="stats/options/quit" to="." method="_on_quit_pressed"]

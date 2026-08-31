@@ -1,8 +1,9 @@
-[gd_scene load_steps=78 format=4 uid="uid://c7765orpdoc1p"]
+[gd_scene load_steps=79 format=4 uid="uid://c7765orpdoc1p"]
 
 [ext_resource type="Texture2D" uid="uid://cdcigcne2u1x7" path="res://assets/BurpMeter.png" id="1_au8l4"]
 [ext_resource type="Texture2D" uid="uid://ccliveox0nqo4" path="res://assets/BurperSpriteSheet.png" id="2_qgidq"]
 [ext_resource type="AudioStream" uid="uid://ddba50nckqvtj" path="res://assets/Player_drop.mp3" id="3_dyvp4"]
+[ext_resource type="Texture2D" uid="uid://cq74cvh8njfks" path="res://assets/exit.png" id="4_00gsr"]
 
 [sub_resource type="GDScript" id="GDScript_qgidq"]
 script/source = "extends Node2D
@@ -77,6 +78,10 @@ func start_meter_animation():
 
 func _on_meter_timer_timeout() -> void:
 	start_meter_animation()
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/main_menu.tscn\")
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_au8l4"]
@@ -1836,6 +1841,13 @@ position = Vector2(369, 16)
 stream = ExtResource("3_dyvp4")
 playback_type = 1
 
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "EXIT"
+icon = ExtResource("4_00gsr")
+
 [connection signal="body_entered" from="Area2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="meter_timer" to="." method="_on_meter_timer_timeout"]
 [connection signal="timeout" from="meter_timer2" to="." method="_on_meter_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
