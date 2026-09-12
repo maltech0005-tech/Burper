@@ -1,11 +1,13 @@
-[gd_scene load_steps=41 format=4 uid="uid://co6djgx6rrq4p"]
+[gd_scene load_steps=43 format=4 uid="uid://co6djgx6rrq4p"]
 
 [ext_resource type="Texture2D" uid="uid://ccliveox0nqo4" path="res://assets/BurperSpriteSheet.png" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cdcigcne2u1x7" path="res://assets/BurpMeter.png" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://csectinmqioga" path="res://assets/help_icon.png" id="3_bqqt6"]
 
 [sub_resource type="GDScript" id="GDScript_bqqt6"]
 resource_name = "main_menu"
 script/source = "extends Node2D
+@onready var help_hover: Label = $help_hover
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +29,15 @@ func _on_settings_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _on_help_mouse_entered() -> void:
+	help_hover.visible=true
+	
+func _on_help_mouse_exited() -> void:
+	help_hover.visible=false
+	
+func _on_help_pressed() -> void:
+	get_tree().change_scene_to_file('res://scenes/help.tscn')
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wu84c"]
@@ -1988,6 +1999,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bqqt6"]
 radius = 30.17549
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+bg_color = Color(0.04, 0.025840001, 0.0164, 0.7529412)
+
 [node name="main_menu" type="Node2D"]
 script = SubResource("GDScript_bqqt6")
 
@@ -2017,30 +2031,30 @@ alignment = 2
 
 [node name="play" type="Button" parent="."]
 offset_left = 268.0
-offset_top = 81.30594
+offset_top = 86.30594
 offset_right = 382.75058
-offset_bottom = 112.30594
+offset_bottom = 117.30594
 text = "Play"
 
 [node name="shop" type="Button" parent="."]
 offset_left = 241.0
-offset_top = 115.30594
+offset_top = 119.30594
 offset_right = 382.75058
-offset_bottom = 146.30594
+offset_bottom = 150.30594
 text = "Shop"
 
 [node name="settings" type="Button" parent="."]
 offset_left = 219.0
-offset_top = 149.30594
+offset_top = 152.30594
 offset_right = 382.75058
-offset_bottom = 180.30594
+offset_bottom = 183.30594
 text = "Settings"
 
 [node name="Quit" type="Button" parent="."]
 offset_left = 197.0
-offset_top = 183.30594
+offset_top = 184.30594
 offset_right = 382.75058
-offset_bottom = 214.30594
+offset_bottom = 215.30594
 text = "Quit"
 
 [node name="player" type="CharacterBody2D" parent="."]
@@ -2093,6 +2107,30 @@ autoplay = "e1"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/Area2D"]
 shape = SubResource("CircleShape2D_bqqt6")
 
+[node name="help" type="Button" parent="."]
+offset_left = 340.0
+offset_top = 63.0
+offset_right = 384.0
+offset_bottom = 85.0
+theme_override_constants/h_separation = 1
+theme_override_font_sizes/font_size = 10
+text = "Help"
+icon = ExtResource("3_bqqt6")
+expand_icon = true
+
+[node name="help_hover" type="Label" parent="."]
+visible = false
+offset_left = 283.0
+offset_top = 84.0
+offset_right = 384.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.74509805)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+text = "Click to learn how to play and navigate through the game"
+autowrap_mode = 2
+
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
@@ -2101,3 +2139,6 @@ shape = SubResource("CircleShape2D_bqqt6")
 [connection signal="body_exited" from="player/Area2D" to="player" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="player/btime" to="player" method="_on_btime_timeout"]
 [connection signal="body_entered" from="enemy/Area2D" to="enemy" method="_on_area_2d_body_entered"]
+[connection signal="mouse_entered" from="help" to="." method="_on_help_mouse_entered"]
+[connection signal="mouse_exited" from="help" to="." method="_on_help_mouse_exited"]
+[connection signal="pressed" from="help" to="." method="_on_help_pressed"]

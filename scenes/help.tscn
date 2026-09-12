@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtbf06rx337xc"]
+
+[ext_resource type="Script" uid="uid://big411yr8ajac" path="res://script/help.gd" id="1_chmrd"]
+[ext_resource type="Texture2D" uid="uid://v4q2bek5f8e5" path="res://assets/bg.png" id="1_ci552"]
+[ext_resource type="Texture2D" uid="uid://cq74cvh8njfks" path="res://assets/exit.png" id="2_50phg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50phg"]
+bg_color = Color(0.21, 0.11129999, 0.11129999, 0.93333334)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 2
+
+[node name="Help" type="Node2D"]
+script = ExtResource("1_chmrd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(192, 107.50001)
+scale = Vector2(12, 6.7187505)
+texture = ExtResource("1_ci552")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 9999902
+limit_bottom = 9999964
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 23.0
+offset_top = 36.0
+offset_right = 346.0
+offset_bottom = 206.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_50phg")
+bbcode_enabled = true
+text = "[u][b]how to play[/b][/u]
+[ul]To move[/ul]
+      -use the WASD or Arrow Keys
+
+[ul]To pause[/ul]
+	  -click the spacebar
+	  -or use the pause button on screen
+
+[ul]To restart[/ul]
+	  -click the \"R\" key
+	  -or use the pause menu
+
+[ul]Open help page in game[/ul]
+	  -pause the game and click the help
+	   button"
+
+[node name="back" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back"
+icon = ExtResource("2_50phg")
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
