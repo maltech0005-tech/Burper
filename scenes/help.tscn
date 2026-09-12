@@ -50,7 +50,14 @@ text = "[u][b]how to play[/b][/u]
 
 [ul]Open help page in game[/ul]
 	  -pause the game and click the help
-	   button"
+	   button
+
+[u]Goal[/u]
+[ul]move arround to locate some cola
+move towards and collide with the cola
+once you collide the cola will tilt towards you and you will start chugging
+repeat the steps and accumulate
+when the counter ends you will be taken to a reward scene and get rewarded according to the amount of cola you drank[/ul]"
 
 [node name="back" type="Button" parent="."]
 offset_right = 8.0
