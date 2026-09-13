@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtbf06rx337xc"]
+[gd_scene load_steps=25 format=3 uid="uid://dtbf06rx337xc"]
 
 [ext_resource type="Script" uid="uid://big411yr8ajac" path="res://script/help.gd" id="1_chmrd"]
 [ext_resource type="Texture2D" uid="uid://v4q2bek5f8e5" path="res://assets/bg.png" id="1_ci552"]
 [ext_resource type="Texture2D" uid="uid://cq74cvh8njfks" path="res://assets/exit.png" id="2_50phg"]
+[ext_resource type="Texture2D" uid="uid://crq3cwkyh46fu" path="res://assets/game_play1.png" id="4_2by0i"]
+[ext_resource type="Texture2D" uid="uid://bjfrkge3mac5e" path="res://assets/game_play2.png" id="5_mpb58"]
+[ext_resource type="Texture2D" uid="uid://cwdp1q16mag0m" path="res://assets/game_play3.png" id="6_i3xxq"]
+[ext_resource type="Texture2D" uid="uid://c26y6j2yn0p7c" path="res://assets/game_play4.png" id="7_0eisp"]
+[ext_resource type="Texture2D" uid="uid://c6qnldcgwbbcm" path="res://assets/game_play5.png" id="8_tbbma"]
+[ext_resource type="Texture2D" uid="uid://hw4aas8ukpq4" path="res://assets/game_play6.png" id="9_oclsq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50phg"]
 bg_color = Color(0.21, 0.11129999, 0.11129999, 0.93333334)
@@ -13,6 +19,126 @@ border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oar4r"]
+atlas = ExtResource("4_2by0i")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsstt"]
+atlas = ExtResource("5_mpb58")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2ygu"]
+atlas = ExtResource("6_i3xxq")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t21m"]
+atlas = ExtResource("7_0eisp")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6nf5"]
+atlas = ExtResource("8_tbbma")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlusn"]
+atlas = ExtResource("9_oclsq")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2c3wl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oar4r")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsstt")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2ygu")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t21m")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6nf5")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlusn")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ylyn"]
+bg_color = Color(0.0293433, 0.0293433, 0.0293433, 0.8627451)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpb58"]
+bg_color = Color(0.02745098, 0.02745098, 0.02745098, 0.8627451)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3xxq"]
+bg_color = Color(0.02745098, 0.02745098, 0.02745098, 0.8627451)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0eisp"]
+bg_color = Color(0.02745098, 0.02745098, 0.02745098, 0.8627451)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbbma"]
+bg_color = Color(0.02745098, 0.02745098, 0.02745098, 0.8627451)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oclsq"]
+bg_color = Color(0.02745098, 0.02745098, 0.02745098, 0.8627451)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsstt"]
+bg_color = Color(0, 0, 0, 0.8509804)
 
 [node name="Help" type="Node2D"]
 script = ExtResource("1_chmrd")
@@ -52,7 +178,7 @@ text = "[u][b]how to play[/b][/u]
 	  -pause the game and click the help
 	   button
 
-[u]Goal[/u]
+[u][b]Game Navigation[/b][/u]
 [ul]move arround to locate some cola
 move towards and collide with the cola
 once you collide the cola will tilt towards you and you will start chugging
@@ -65,4 +191,142 @@ offset_bottom = 8.0
 text = "Back"
 icon = ExtResource("2_50phg")
 
+[node name="gameplay_img" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(183.75, 121.24999)
+scale = Vector2(0.281684, 0.2677469)
+sprite_frames = SubResource("SpriteFrames_2c3wl")
+animation = &"6"
+autoplay = "1"
+
+[node name="img1" type="RichTextLabel" parent="gameplay_img"]
+offset_left = -105.61478
+offset_top = -98.04031
+offset_right = 142.89066
+offset_bottom = 144.72626
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ylyn")
+bbcode_enabled = true
+text = "To move use the keys: 
+WASD
+[ul]'W' to go up
+'A' to go left
+'S' to go down
+'D' to go right
+[/ul]
+
+or use the arrow keys"
+
+[node name="img2" type="RichTextLabel" parent="gameplay_img"]
+visible = false
+offset_left = -66.56395
+offset_top = -217.55617
+offset_right = 242.29274
+offset_bottom = -86.83571
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_mpb58")
+text = "When you collide with a portal
+you teleport to another random portal
+so sprint up and get in"
+
+[node name="img3" type="RichTextLabel" parent="gameplay_img"]
+visible = false
+offset_left = 22.187983
+offset_top = -228.76079
+offset_right = 260.04315
+offset_bottom = -161.53313
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_i3xxq")
+text = "You can pause the game by clicking here"
+
+[node name="img4" type="RichTextLabel" parent="gameplay_img"]
+visible = false
+offset_left = 189.04161
+offset_top = -79.36597
+offset_right = 480.14795
+offset_bottom = 17.740662
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_0eisp")
+text = "after pausing you can select these options to either continue, restart or quit"
+
+[node name="img5" type="RichTextLabel" parent="gameplay_img"]
+visible = false
+offset_left = 256.49307
+offset_top = -225.02592
+offset_right = 515.6488
+offset_bottom = -68.16138
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbbma")
+text = "When the timer runs out
+you will be taken to a reward scene so you better run arround and chug those colas"
+
+[node name="img6" type="RichTextLabel" parent="gameplay_img"]
+visible = false
+offset_left = -552.9245
+offset_top = -109.24493
+offset_right = -122.4776
+offset_bottom = 17.74067
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_oclsq")
+bbcode_enabled = true
+text = "Dropping out of a portal only to break the ground!, nope here is where you get rewarded in exchange of the cola you chugged up like a champ."
+
+[node name="next" type="Button" parent="gameplay_img"]
+offset_left = 25.738068
+offset_top = -370.6859
+offset_right = 86.089325
+offset_bottom = -324.7464
+theme_override_font_sizes/font_size = 21
+text = "Next"
+
+[node name="previous" type="Button" parent="gameplay_img"]
+offset_left = -187.26648
+offset_top = -370.6859
+offset_right = -91.26648
+offset_bottom = -324.74643
+theme_override_font_sizes/font_size = 21
+text = "Previous"
+
+[node name="visual-guide" type="Button" parent="."]
+offset_left = 90.0
+offset_top = 5.0
+offset_right = 299.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.40850002, 0.5348501, 0.95, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_tsstt")
+text = "click to watch visual guide"
+
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="gameplay_img/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="gameplay_img/previous" to="." method="_on_previous_pressed"]
+[connection signal="pressed" from="visual-guide" to="." method="_on_visualguide_pressed"]
